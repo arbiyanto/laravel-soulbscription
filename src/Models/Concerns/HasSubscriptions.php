@@ -393,6 +393,7 @@ trait HasSubscriptions
         }
 
         $featureModel = config('soulbscription.models.feature');
+
         return $this->loadedTicketFeatures = $featureModel::with([
                 'tickets' => fn (HasMany $query) => $query->withoutExpired()->whereMorphedTo('subscriber', $this),
             ])
